@@ -60,12 +60,55 @@ html[data-theme="dusk"] .listen:hover{background:#69d5cd}
 html[data-theme="dusk"] .live-bars i{background:#176c67}
 html[data-theme="dusk"] dialog{border-color:#39bfb5}
 
-/* A moving wash of reflected color, behind every card and control. */
+/* Owned video within the title banner, independent of the page background. */
+.intro{isolation:isolate;overflow:hidden;border:1px solid #ffffff90;margin-top:28px;min-height:310px;padding:48px 28px;display:flex;align-items:center;background:#10252c}
+.banner-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.intro::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#071c286b,#071c2820);z-index:-1;pointer-events:none}
+.banner-copy{min-width:0;max-width:100%}
+.card-video{display:block;width:100%;height:auto;aspect-ratio:1.55;object-fit:cover}
+#dialog-video{display:block;width:100%;max-height:54vh;background:#071c28}
+#dialog-video[hidden],#dialog-image[hidden]{display:none}
+.photo-main .photo-caption{flex-wrap:wrap}
+@media(max-width:760px){.card-video{aspect-ratio:1}}
+@media(max-width:490px){.card-video{aspect-ratio:1.15}}
+.intro h1,html[data-theme="night"] .intro h1{font-size:clamp(44px,8.6vw,116px)}
+.banner-motion{position:absolute;bottom:12px;right:12px;background:#fff;color:#173b34;border:1px solid #173b34;padding:7px 10px;font:12px 'DM Sans',sans-serif;cursor:pointer}
+@media(max-width:760px){.intro{padding:32px 18px;min-height:260px}.intro h1,html[data-theme="night"] .intro h1{font-size:clamp(38px,9vw,72px)}}
+@media(max-width:490px){.intro{padding:28px 14px;min-height:235px;margin-top:20px}.intro h1,html[data-theme="night"] .intro h1{font-size:clamp(30px,9.1vw,44px)}}
+
+/* Palm-tree background experiment. */
 body{position:relative;isolation:isolate}
-body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 20% 25%,#58dedb66,transparent 38%),radial-gradient(ellipse at 80% 65%,#f294d766,transparent 38%),radial-gradient(ellipse at 50% 90%,#aaa0ed59,transparent 35%);background-size:150% 150%,160% 160%,145% 145%;animation:pearl-drift 18s ease-in-out infinite alternate;opacity:.85}
-html[data-theme="night"] body::before{opacity:.18}
-@keyframes pearl-drift{0%{background-position:0% 15%,100% 70%,40% 100%;filter:hue-rotate(-10deg)}50%{background-position:40% 65%,60% 20%,90% 40%;filter:hue-rotate(10deg)}100%{background-position:100% 35%,0% 90%,20% 0%;filter:hue-rotate(-5deg)}}
-@media(prefers-reduced-motion:reduce){body::before{animation:none}}
+.page-background-video{position:fixed;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:#04151b38;pointer-events:none}
+html[data-theme="night"] body::before{background:#020c164d}
+.intro{background:transparent;border:0;overflow:visible;min-height:260px;padding:40px 0;margin-top:12px}
+.intro::after{display:none}
+.banner-motion{bottom:0;right:0}
+@media(max-width:490px){.intro{min-height:220px;padding:32px 0;margin-top:8px}}
 
+/* Full-width black masthead; the background video begins beneath it. */
+:root{--masthead-height:99px}
+header{position:relative;isolation:isolate;height:var(--masthead-height);border-bottom:0}
+header::before{content:"";position:absolute;z-index:-1;top:0;bottom:0;left:50%;width:100vw;transform:translateX(-50%);background:#000;pointer-events:none}
+.page-background-video{top:var(--masthead-height);height:calc(100% - var(--masthead-height))}
+body::before{top:var(--masthead-height)}
+@media(max-width:760px){:root{--masthead-height:78px}}
 
+/* End the full-width video above the playback control; reveal the texture below. */
+.intro{isolation:auto;margin-top:0}
+.page-background-video{position:absolute;top:0;left:50%;right:auto;bottom:auto;width:100vw;height:calc(100% - 40px);transform:translateX(-50%);z-index:-1}
+body::before{display:none}
+.intro::after{display:block;top:0;left:50%;right:auto;bottom:auto;width:100vw;height:calc(100% - 40px);transform:translateX(-50%);background:#04151b38;z-index:-1}
+html[data-theme="night"] .intro::after{background:#020c164d}
+@media(max-width:490px){.intro{margin-top:0}}
 
+.banner-copy{width:100%;text-align:right}
+.banner-copy .eyebrow{margin-left:auto}
+
+/* Pink mood control, illuminated after dark. */
+.theme{background:#ff39b6;color:#271021;border:1px solid #ff81d5;box-shadow:3px 3px #45102f}
+.theme .switch{background:#471238}
+html[data-theme="dusk"] .theme .switch i,
+html[data-theme="night"] .theme .switch i{background:#fff0fb}
+html[data-theme="night"] .theme{background:#ff39b6;border-color:#ffb1e7;box-shadow:0 0 5px #ffb1e7,0 0 14px #ff39b6,0 0 30px #ff149380}
+html[data-theme="night"] .theme .switch i{box-shadow:0 0 5px #fff0fb,0 0 10px #ff9cde}

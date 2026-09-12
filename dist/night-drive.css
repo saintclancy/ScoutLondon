@@ -1,0 +1,39 @@
+/* Night palette and visual collection layout. */
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;1,600;1,700&display=swap');
+:root{--bg:#103440;--pink:#ff499b;--aqua:#75eadc;--panel:#09232f;--muted:#a0bbc4}
+body{background-image:radial-gradient(ellipse at 85% 5%,#ff268e12,transparent 50%),linear-gradient(#88eeee03 1px,transparent 1px);background-size:auto,100% 4px}
+h1{font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-weight:700;text-transform:uppercase;font-style:italic;letter-spacing:-1px;font-size:clamp(58px,7.8vw,110px);line-height:.98;text-shadow:2px 2px 0 #031921}
+.title-star{font:italic 36px 'Barlow Condensed',sans-serif;color:var(--aqua);margin-left:18px;vertical-align:middle;letter-spacing:-6px}
+.wordmark{font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:-2px}.wordmark span{color:var(--aqua)}
+.intro{padding-top:50px}.eyebrow{letter-spacing:2px}.description{margin-top:23px}
+.board-label{border-top-color:#70dcc459}
+.photo{background:#0a202c;color:#e8f5f4;border:1px solid #79b8bd65;padding:9px 9px 16px;box-shadow:5px 12px 25px #0005}
+.photo-main{transform:rotate(-1.5deg)}.photo-ocean{transform:rotate(1.5deg)}
+.photo-caption,.photo-ocean .photo-caption{font-family:'Barlow Condensed',sans-serif;font-style:normal;font-weight:600;font-size:26px;letter-spacing:.2px}
+.photo-caption>span{color:#a4c1c8;line-height:1.7}.photo-index{background:#061822c9;padding:5px 8px;color:var(--aqua);text-shadow:none}
+.tape{background:#71dcd34a;width:70px;height:21px;top:-10px;transform:rotate(-3deg)}
+.photo-main img{height:284px}.photo-ocean img{height:205px}
+.note{background:#163f4b;color:#d4faf1;border:1px solid #6ae4d58a;transform:rotate(1deg);box-shadow:4px 8px 20px #0003}
+.note .mini{color:var(--aqua)}.note h2{font:italic 600 44px/1 'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.2px;color:var(--aqua)}
+.note-bottom{border-top-color:#ffffff30;font:14px 'DM Sans',sans-serif}.pin{background:var(--pink)}
+.small-note{background:#e83e86;color:#fff4f8;transform:rotate(-2deg)}.small-note>p:last-child{font:italic 600 34px/1.05 'Barlow Condensed',sans-serif}.small-note .mini{color:#2b1020}
+.music{border-top:2px solid var(--pink);transform:rotate(.5deg)}.track h2{font:600 28px/1.1 'Barlow Condensed',sans-serif}.record{box-shadow:0 0 24px #33d6cd12,5px 8px 18px #0007}
+.scribble{font:italic 500 16px 'DM Sans',sans-serif}.dialog-copy h2{font:600 34px 'Barlow Condensed',sans-serif}
+html[data-theme="night"]{--bg:#060f1e;--panel:#0b1928;--pink:#ff4198;--aqua:#64f2dc}
+html[data-theme="night"] .photo img{filter:saturate(1.15) contrast(1.04)}
+html[data-theme="night"] h1{text-shadow:2px 2px 0 #003c48,0 0 28px #ff41981a}
+@media(max-width:760px){h1{font-size:clamp(55px,10vw,78px)}.title-star{font-size:26px;margin-left:9px}.photo-main img{height:240px}.note h2{font-size:38px}}
+@media(max-width:490px){.intro{padding-top:35px}h1{font-size:clamp(48px,12.5vw,64px)}.title-star{font-size:22px}.photo-main img{height:280px}.photo-ocean img{height:230px}.note h2{font-size:44px}.photo-caption,.photo-ocean .photo-caption{font-size:26px}}
+
+.intro{padding-bottom:40px}
+.board{grid-template-columns:minmax(0,1.8fr) minmax(0,1fr);gap:35px}
+.photo-main{grid-column:1;grid-row:1}.photo-ocean{grid-column:1;grid-row:2;margin-top:0}
+.note{grid-column:2;grid-row:1;margin-top:7px;padding:27px;align-self:stretch;display:flex;flex-direction:column;justify-content:space-between}
+.note h2{font-style:normal;font-size:clamp(54px,6.5vw,90px);line-height:.95;margin:28px 0}
+.note .placeholder-copy{font-size:14px;color:var(--muted);margin:0}
+.music{grid-column:2;grid-row:2}
+.photo-main img,.photo-ocean img{height:auto;aspect-ratio:1.55;object-fit:cover}
+.photo-caption,.photo-ocean .photo-caption{font-size:24px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.photo-caption>span{font-size:11px;margin:0;flex-shrink:0}
+@media(max-width:760px){.board{grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:25px}.note{padding:20px}.note h2{font-size:52px}.photo-caption,.photo-ocean .photo-caption{display:block;font-size:24px}.photo-caption>span{margin-top:6px}.photo-main img,.photo-ocean img{aspect-ratio:1;object-fit:cover}}
+@media(max-width:490px){.board{display:flex;gap:28px}.photo-main{order:0}.photo-ocean{order:1}.note{order:2;min-height:260px;margin-top:0}.music{order:3}.note h2{font-size:68px}.photo-main img,.photo-ocean img{aspect-ratio:1.15}.intro{padding-bottom:30px}}

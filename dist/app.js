@@ -81,11 +81,13 @@ const notesKey = 'scout-notes-v1';
 const defaultNote = {
   id: 'welcome-note',
   title: 'Welcome to Scout Notes',
-  body: '# Welcome to Markdown\n\nMarkdown lets you format notes with a few symbols. Put the command at the start of a line, then add a space.\n\n## Quick commands\n\n- `# Heading` creates a large heading.\n- `**bold**` makes text bold.\n- `*italic*` makes text italic.\n- `` `code` `` highlights a short command or phrase.\n- `> quote` creates a quote.\n- `- item` creates a bullet list.\n- `1. item` creates a numbered list.\n- `[link text](https://example.com)` creates a clickable link.\n- `![alt text](https://example.com/image.jpg)` adds an image.\n- `[watch video](https://example.com/video)` links to a video.\n\n## Example\n\n**Important** and *emphasis* can live together in one note.',
+  body: '# Welcome to Markdown\n\nMarkdown lets you format notes with a few symbols. Put the command at the start of a line, then add a space.\n\n## Quick commands\n\n- `# Heading` creates a large heading.\n- `**bold**` makes text bold.\n- `*italic*` makes text italic.\n- `` `code` `` highlights a short command or phrase.\n- `> quote` creates a quote.\n- `- item` creates a bullet list.\n- `1. item` creates a numbered list.\n- `[link text](https://clancy.land)` creates a clickable link.\n- `![obama](https://upload.wikimedia.org/wikipedia/commons/8/8d/President_Barack_Obama.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original)` adds an image.\n- `[watch video](https://www.youtube.com/watch?v=SnwS5sPOzb0)` links to a video.\n\n## Example\n\n**Important** and *emphasis* can live together in one note.',
   updatedAt: Date.now()
 };
 const legacyWelcomeBody = '# Welcome\n\nThis is your private note space.\n\n- ideas\n- plans\n- memories\n\n> Keep it local, calm, and useful.';
-const previousGuideBody = '# Welcome to Markdown\n\nMarkdown lets you format notes with a few symbols. Put the command at the start of a line, then add a space.\n\n## Quick commands\n\n- `# Heading` creates a large heading.\n- `**bold**` makes text bold.\n- `*italic*` makes text italic.\n- `` `code` `` highlights a short command or phrase.\n- `> quote` creates a quote.\n- `- item` creates a bullet list.\n- `1. item` creates a numbered list.\n\n## Example\n\n**Important** and *emphasis* can live together in one note.';
+const previousGuideBody = '# Welcome to Markdown\n\nMarkdown lets you format notes with a few symbols. Put the command at the start of a line, then add a space.\n\n## Quick commands\n\n- `# Heading` creates a large heading.\n- `**bold**` makes text bold.\n- `*italic*` makes text italic.\n- `` `code` `` highlights a short command or phrase.\n- `> quote` creates a quote.\n- `- item` creates a bullet list.\n- `1. item` creates a numbered list.\n- `[link text](https://example.com)` creates a clickable link.\n- `![alt text](https://example.com/image.jpg)` adds an image.\n- `[watch video](https://example.com/video)` links to a video.\n\n## Example\n\n**Important** and *emphasis* can live together in one note.';
+const guideWithMediaExamples = '# Welcome to Markdown\n\nMarkdown lets you format notes with a few symbols. Put the command at the start of a line, then add a space.\n\n## Quick commands\n\n- `# Heading` creates a large heading.\n- `**bold**` makes text bold.\n- `*italic*` makes text italic.\n- `` `code` `` highlights a short command or phrase.\n- `> quote` creates a quote.\n- `- item` creates a bullet list.\n- `1. item` creates a numbered list.\n- `[link text](https://clancy.land)` creates a clickable link.\n- `![obama](https://upload.wikimedia.org/wikipedia/commons/8/8d/President_Barack_Obama.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original)` adds an image.\n- `[watch video](https://www.youtube.com/watch?v=SnwS5sPOzb0)` links to a video.\n\n## Example\n\n**Important** and *emphasis* can live together in one note.';
+const guideWithCapitalObama = guideWithMediaExamples.replace('![obama]', '![Obama]');
 
 function escapeHtml(value) {
   return value
@@ -97,12 +99,20 @@ function escapeHtml(value) {
 }
 
 function inlineFormat(value) {
-  return escapeHtml(value)
+  const codeSpans = [];
+  const protectedValue = value.replace(/(`+)([\s\S]*?)\1/g, (_match, _ticks, code) => {
+    const token = `\u0000${codeSpans.length}\u0000`;
+    codeSpans.push(`<code>${escapeHtml(code.trim())}</code>`);
+    return token;
+  });
+
+  return escapeHtml(protectedValue)
     .replace(/`([^`]+)`/g, '<code>$1</code>')
     .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
     .replace(/!\[([^\]]*)\]\((https?:\/\/[^)\s]+)\)/g, '<img src="$2" alt="$1">')
     .replace(/\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>')
-    .replace(/\*([^*]+)\*/g, '<em>$1</em>');
+    .replace(/\*([^*]+)\*/g, '<em>$1</em>')
+    .replace(/\u0000(\d+)\u0000/g, (_match, index) => codeSpans[Number(index)]);
 }
 
 function renderMarkdown(markdown) {
@@ -153,7 +163,7 @@ function loadNotes() {
     if (!saved) return [defaultNote];
     const parsed = JSON.parse(saved);
     if (!Array.isArray(parsed) || !parsed.length) return [defaultNote];
-    return parsed.map((note) => note.id === defaultNote.id && [legacyWelcomeBody, previousGuideBody].includes(note.body) ? defaultNote : note);
+    return parsed.map((note) => note.id === defaultNote.id && [legacyWelcomeBody, previousGuideBody, guideWithMediaExamples, guideWithCapitalObama].includes(note.body) ? defaultNote : note);
   } catch {
     return [defaultNote];
   }
@@ -245,19 +255,6 @@ function persistActiveNote() {
   renderNotePreview();
 }
 
-function persistPreviewEdit(previewContent) {
-  const textarea = document.querySelector('#note-body');
-  const note = getSelectedNote();
-  if (!textarea || !note) return;
-
-  const body = previewContent.innerText.replace(/\u00a0/g, ' ');
-  textarea.value = body;
-  note.body = body;
-  note.updatedAt = Date.now();
-  saveNotes(notes);
-  renderNoteList();
-}
-
 function handleNewNote() {
   const note = createNote('New note', '# New note\n\nStart writing here.');
   notes.unshift(note);
@@ -301,10 +298,6 @@ function initNotes() {
   searchInput.addEventListener('input', renderNoteList);
   titleInput.addEventListener('input', persistActiveNote);
   textarea.addEventListener('input', persistActiveNote);
-  document.querySelector('#note-preview')?.addEventListener('input', (event) => {
-    const previewContent = event.target.closest('.preview-content');
-    if (previewContent) persistPreviewEdit(previewContent);
-  });
 }
 
 initNotes();

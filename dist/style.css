@@ -11,7 +11,7 @@
 /* Notes writing and reading panes */
 .note-preview{display:flex;flex-direction:column;max-width:none!important}
 .preview-label{align-self:flex-end;margin-bottom:24px}.preview-pane-header{display:flex;align-items:center;justify-content:flex-end;padding:18px 20px 12px;border-bottom:1px solid var(--line);color:var(--muted);flex:0 0 auto}.preview-pane-header .preview-label{margin:0}.preview-content{flex:1;min-height:0;overflow:visible}
-.note-preview > h1:first-of-type,.note-preview > h2:first-of-type,.note-preview > h3:first-of-type{margin-top:0}.preview-content{min-height:0;outline:none}.preview-content:focus{outline:2px solid var(--aqua);outline-offset:6px;border-radius:4px}
+.note-preview > h1:first-of-type,.note-preview > h2:first-of-type,.note-preview > h3:first-of-type{margin-top:0}.preview-content{min-height:0}
 .editor-pane{display:flex;flex-direction:column;min-width:0;background:rgba(255,255,255,.018)}
 .editor-pane-header{display:flex;align-items:center;justify-content:space-between;padding:18px 20px 12px;border-bottom:1px solid var(--line);color:var(--muted)}
 .editor-label{font:11px 'Space Mono',monospace;letter-spacing:1.3px;text-transform:uppercase;color:var(--aqua)}

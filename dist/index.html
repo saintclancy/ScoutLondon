@@ -25,12 +25,51 @@
    <section class="intro" aria-labelledby="title"><video class="banner-video page-background-video" autoplay muted loop playsinline preload="metadata" poster="./assets/sunroof-palm-trees-poster.jpg" aria-hidden="true"><source src="./assets/sunroof-palm-trees.mp4" type="video/mp4"></video><div class="banner-copy"><p class="eyebrow">MIAMI / FLORIDA</p><h1 id="title" aria-label="Scout Dot London">Scout<span class="brand-dot">.</span>London</h1></div><div class="coordinates">25°46′ N / 80°08′ W<br><span id="sky-label">MIAMI / DUSK</span></div></section>
    <div class="board-label"><span>THE PINBOARD</span><span>IMAGES / TEXT / AUDIO</span></div>
    <section class="board" aria-label="Personal pinboard">
-    <button class="photo photo-main" data-photo="miami" aria-label="Open video: NORTH BISCAYNE SUNRISE"><span class="tape"></span><div class="image-wrap"><video class="card-video" autoplay muted loop playsinline preload="metadata" poster="./assets/miami-sunrise-poster-v2.jpg" aria-label="North Biscayne sunrise"><source src="./assets/miami-sunrise-trim-v2.mp4" type="video/mp4"></video><span class="photo-index">01 / VIDEO</span><span class="expand">↗</span></div><span class="photo-caption">NORTH BISCAYNE SUNRISE<span>MIAMI / 01</span></span></button>
+    <button class="photo photo-main" data-photo="miami" aria-label="Open video: NORTH BISCAYNE SUNRISE"><span class="tape"></span><div class="image-wrap"><video class="card-video" autoplay muted loop playsinline preload="metadata" poster="./assets/miami-sunrise-poster-v2.jpg" aria-label="North Biscayne sunrise"><source src="./assets/miami-sunrise-trim-v2.mp4" type="video/mp4"></video><span class="photo-index accent-tag">01 / VIDEO</span><span class="expand">↗</span></div><span class="photo-caption">NORTH BISCAYNE SUNRISE<span>MIAMI / 01</span></span></button>
     <article class="note"><p class="mini">TEXT / 01</p><h2>BOLD<br>TITLE</h2><p class="placeholder-copy">Text placeholder.</p></article>
     <article class="music"><div class="music-top"><span class="mini">CURRENTLY ON REPEAT</span><span class="live-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span></div><div class="record" aria-hidden="true"><div><span>SCOUT FM</span><b>33⅓</b></div></div><div class="track"><div><h2>Something About Us</h2><p>Daft Punk · Discovery</p></div><span>2001</span></div><a class="listen" href="https://www.youtube.com/results?search_query=Daft+Punk+Something+About+Us+official" target="_blank" rel="noopener noreferrer"><span>↗</span> Find it on YouTube</a></article>
 
-    <button class="photo photo-ocean" data-photo="ocean" aria-label="Open photo: ROOFTOP STAYCATION"><span class="tape"></span><div class="image-wrap"><img src="./assets/scout-hot-tub.jpg" alt="Scout in a rooftop hot tub"><span class="expand">↗</span></div><span class="photo-caption">ROOFTOP STAYCATION<span>CHARLOTTE / 01</span></span><span class="card-caption">Shore House with Clancy</span></button>
+    <button class="photo photo-ocean" data-photo="ocean" aria-label="Open photo: ROOFTOP STAYCATION"><span class="tape"></span><div class="image-wrap"><img src="./assets/scout-hot-tub.jpg" alt="Scout in a rooftop hot tub"><span class="photo-index accent-tag">01 / Photo</span><span class="expand">↗</span></div><span class="photo-caption">ROOFTOP STAYCATION<span>CHARLOTTE / 01</span></span><span class="card-caption">Shore House with Clancy</span></button>
 
+   </section>
+   <section class="notes-workspace" id="notes" aria-labelledby="notes-title">
+    <div class="notes-header">
+     <div>
+      <p class="mini accent-tag">LOCAL / NOTEBOOK</p>
+      <h2 id="notes-title">Scout Notes</h2>
+     </div>
+     <button id="new-note" class="new-note-button" type="button">+ New note</button>
+    </div>
+    <div class="notes-shell">
+     <aside class="notes-sidebar" aria-label="Notes list">
+      <label class="search-label" for="note-search">
+       <span>Search</span>
+       <input id="note-search" type="search" placeholder="Find a note" autocomplete="off">
+      </label>
+      <ul id="note-list" class="note-list" aria-live="polite"></ul>
+     </aside>
+     <div class="notes-editor" aria-label="Current note">
+      <div class="editor-toolbar">
+       <input id="note-title" type="text" value="Welcome to Scout Notes" aria-label="Note title">
+       <button id="delete-note" class="delete-note" type="button">Delete</button>
+      </div>
+      <div class="editor-panels">
+       <article id="note-preview" class="note-preview" aria-live="polite">
+        <div class="preview-pane-header">
+         <span class="preview-label" contenteditable="false">Preview</span>
+        </div>
+        <div class="preview-content" contenteditable="true" role="textbox" aria-label="Editable note preview"></div>
+       </article>
+       <div class="editor-pane">
+        <div class="editor-pane-header">
+        <span class="editor-label">Markdown</span>
+        <span class="editor-hint">Write freely</span>
+        </div>
+        <textarea id="note-body" aria-label="Markdown note editor" placeholder="Start writing here..." spellcheck="true"></textarea>
+       </div>
+      </div>
+     </div>
+    </div>
    </section>
   </main>
   <footer><span>SCOUT.LONDON <b>© 2026</b></span><span>VISUAL COLLECTION / 001</span></footer>

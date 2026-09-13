@@ -112,3 +112,8 @@ html[data-theme="dusk"] .theme .switch i,
 html[data-theme="night"] .theme .switch i{background:#fff0fb}
 html[data-theme="night"] .theme{background:#ff39b6;border-color:#ffb1e7;box-shadow:0 0 5px #ffb1e7,0 0 14px #ff39b6,0 0 30px #ff149380}
 html[data-theme="night"] .theme .switch i{box-shadow:0 0 5px #fff0fb,0 0 10px #ff9cde}
+.card-caption{display:block;padding:10px 5px 0;font:14px/1.5 'DM Sans',sans-serif;color:#49635b}
+.photo-ocean .photo-caption{flex-wrap:wrap}
+.banner-motion{width:44px;height:36px;display:grid;place-items:center;padding:7px;border-radius:22px;background:#ff39b6;color:#271021;border:1px solid #ff81d5;box-shadow:3px 3px #45102f}
+.banner-motion svg{width:21px;height:21px;fill:currentColor}
+html[data-theme="night"] .banner-motion{border-color:#ffb1e7;box-shadow:0 0 5px #ffb1e7,0 0 14px #ff39b6,0 0 30px #ff149380}

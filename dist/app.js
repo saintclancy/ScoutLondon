@@ -15,7 +15,7 @@ themeButton.addEventListener('click', () => {
 });
 const photos = {
   miami: { file: 'miami-sunrise-trim-v2', video: true, title: 'NORTH BISCAYNE SUNRISE', description: 'Miami, Florida.', alt: 'North Biscayne sunrise', credit: 'Clancy Saint Cooper' },
-  ocean: { file: 'havana', title: 'LITTLE HAVANA', description: 'Ball & Chain, Calle Ocho. Miami, Florida.', alt: 'Ball and Chain in Little Havana at night', source: 'https://unsplash.com/s/photos/little-havana' }
+  ocean: { file: 'scout-hot-tub', title: 'ROOFTOP STAYCATION', description: 'Charlotte / 01 — Shore House with Clancy', alt: 'Scout in a rooftop hot tub', credit: 'Clancy Saint Cooper' }
 };
 const dialog = document.querySelector('#photo-dialog');
 document.querySelectorAll('[data-photo]').forEach(button => button.addEventListener('click', () => {
@@ -36,7 +36,7 @@ document.querySelectorAll('[data-photo]').forEach(button => button.addEventListe
   document.querySelector('#dialog-title').textContent = photo.title;
   document.querySelector('#dialog-description').textContent = photo.description;
   const credit = document.querySelector('#credit');
-  credit.textContent = photo.credit ? `Video source: ${photo.credit}` : 'Photo source ↗';
+  credit.textContent = photo.credit ? `${photo.video ? 'Video' : 'Photo'} source: ${photo.credit}` : 'Photo source ↗';
   if (photo.source) credit.href = photo.source;
   else credit.removeAttribute('href');
   dialog.showModal();
@@ -56,7 +56,12 @@ bannerMotion.type = 'button';
 document.querySelector('.intro').append(bannerMotion);
 bannerVideo.muted = true;
 function updateBannerLabel() {
-  bannerMotion.textContent = bannerVideo.paused ? 'Play videos' : 'Pause videos';
+  const paused = bannerVideo.paused;
+  bannerMotion.setAttribute('aria-label', paused ? 'Play videos' : 'Pause videos');
+  bannerMotion.title = paused ? 'Play videos' : 'Pause videos';
+  bannerMotion.innerHTML = paused
+    ? '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>'
+    : '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5h4v14H6zm8 0h4v14h-4z"/></svg>';
 }
 function syncBannerMotion() {
   if (motionPreference.matches) { bannerVideo.pause(); cardVideo.pause(); }

@@ -1,0 +1,29 @@
+/* Final mood and responsive overrides. */
+html[data-theme="night"]{color-scheme:dark}
+html[data-theme="night"] .header-note,
+html[data-theme="night"] .eyebrow,
+html[data-theme="night"] .board-label,
+html[data-theme="night"] footer{background:var(--panel);color:var(--ink);border-color:var(--line)}
+html[data-theme="night"] .board-label{box-shadow:4px 4px #b6ff36}
+html[data-theme="night"] .photo,
+html[data-theme="night"] .music{background:var(--panel);color:var(--ink);border-color:var(--line)}
+html[data-theme="night"] .note{background:var(--panel);color:var(--ink);border-color:#b6ff36;box-shadow:0 0 0 1px #b6ff3638,0 0 24px #b6ff361c}
+html[data-theme="night"] .note .mini,
+html[data-theme="night"] .note .placeholder-copy,
+html[data-theme="night"] .music-top,
+html[data-theme="night"] .track p,
+html[data-theme="night"] .track>span,
+html[data-theme="night"] .card-caption{color:var(--muted)}
+html[data-theme="night"] .expand,
+html[data-theme="night"] .close{background:var(--panel);color:var(--ink);border-color:var(--line)}
+html[data-theme="night"] dialog{background:var(--panel);color:var(--ink);border-color:#b6ff36}
+html[data-theme="night"] .dialog-copy h2{color:var(--ink)}
+html[data-theme="night"] .dialog-copy a{color:var(--aqua)}
+html[data-theme="night"] #notes .notes-shell{background:#0b1928}
+html[data-theme="night"] #notes .notes-sidebar{background:#0d1d2d}
+html[data-theme="night"] #notes .notes-editor,
+html[data-theme="night"] #notes .editor-pane,
+html[data-theme="night"] #notes .note-preview{background:#0b1928}
+#note-title:focus-visible,#note-body:focus-visible{outline:3px solid var(--aqua);outline-offset:3px}
+@media(max-width:760px){#notes .editor-panels{grid-template-columns:1fr}#notes #note-body{border-right:0;border-bottom:1px solid var(--line);min-height:220px}#notes .note-preview{min-height:220px}.notes-header{flex-direction:column;align-items:flex-start}.notes-header .new-note-button{width:100%}.note-list{grid-template-columns:1fr}}
+@media(max-width:760px){#notes .notes-sidebar,#notes .notes-editor,#notes .editor-panels,#notes .editor-pane,#notes .note-preview{min-width:0}#notes .note-preview code,#notes .note-preview a{overflow-wrap:anywhere;word-break:break-word}}

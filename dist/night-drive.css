@@ -19,7 +19,7 @@ h1{font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-weight:700;text
 .small-note{background:#e83e86;color:#fff4f8;transform:rotate(-2deg)}.small-note>p:last-child{font:italic 600 34px/1.05 'Barlow Condensed',sans-serif}.small-note .mini{color:#2b1020}
 .music{border-top:2px solid var(--pink);transform:rotate(.5deg)}.track h2{font:600 28px/1.1 'Barlow Condensed',sans-serif}.record{box-shadow:0 0 24px #33d6cd12,5px 8px 18px #0007}
 .scribble{font:italic 500 16px 'DM Sans',sans-serif}.dialog-copy h2{font:600 34px 'Barlow Condensed',sans-serif}
-html[data-theme="night"]{--bg:#060f1e;--panel:#0b1928;--pink:#ff4198;--aqua:#64f2dc}
+html[data-theme="night"]{--bg:#060f1e;--panel:#0b1928;--pink:#ff39b6;--aqua:#b6ff36}
 html[data-theme="night"] .photo img{filter:saturate(1.15) contrast(1.04)}
 html[data-theme="night"] h1{text-shadow:2px 2px 0 #003c48,0 0 28px #ff41981a}
 @media(max-width:760px){h1{font-size:clamp(55px,10vw,78px)}.title-star{font-size:26px;margin-left:9px}.photo-main img{height:240px}.note h2{font-size:38px}}
